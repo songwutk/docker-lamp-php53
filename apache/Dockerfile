@@ -3,7 +3,7 @@ MAINTAINER korvinca@gmail.com
 
 VOLUME ["/var/www"]
 
-RUN echo "America/Los_Angeles" > /etc/timezone && \
+RUN echo "Asia/Bangkok" > /etc/timezone && \
     dpkg-reconfigure -f noninteractive tzdata
 
 ENV DEBIAN_FRONTEND noninteractive

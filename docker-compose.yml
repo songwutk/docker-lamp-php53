@@ -3,6 +3,7 @@ version: '2'
 services:
   mysql:
     image: mysql
+    container_name: mysql
     volumes:
       - db_data:/var/lib/mysql
       - ./db-dump:/docker-entrypoint-initdb.d
@@ -16,6 +17,7 @@ services:
 #      - "3306:3306"
 
   phpmyadmin:
+    container_name: sqladmin
     depends_on:
       - mysql
     image: phpmyadmin/phpmyadmin
@@ -29,6 +31,7 @@ services:
       - "89:80"
 
   apache2:
+    container_name: apache2
     depends_on:
       - mysql
     build: ./apache/
@@ -44,6 +47,7 @@ services:
       - ../tmp:/tmp
 
   nginx:
+    container_name: nginx_rev
     build: ./nginx/
     ports:
         - "80:80"
